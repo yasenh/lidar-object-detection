@@ -7,7 +7,6 @@
  * Date: 05/25/2019
  */
 
-#include "sensors/lidar.h"
 #include "render/render.h"
 #include "processPointClouds.h"
 // using templates for processPointClouds so also include .cpp to help linker
@@ -92,7 +91,7 @@ int main (int argc, char** argv) {
     initCamera(setAngle, viewer);
 
     ProcessPointClouds<pcl::PointXYZI> point_cloud_processor;
-    std::vector<boost::filesystem::path> stream = point_cloud_processor.streamPcd("../src/sensors/data/pcd/data_1");
+    std::vector<boost::filesystem::path> stream = point_cloud_processor.streamPcd("../data/pcd/data_1");
     auto stream_iterator = stream.begin();
     pcl::PointCloud<pcl::PointXYZI>::Ptr input_cloud;
 
