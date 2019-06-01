@@ -30,3 +30,23 @@ http://www.pointclouds.org/documentation/tutorials/installing_homebrew.php
 
 
 
+## RUN
+
+
+
+## TODO
+
+- [ ] Clean up code
+- [ ] Docker image
+- [ ] Better plane segmentation algorithm
+- [ ] Better clustering algorithm: DBSCAN
+- [ ] PointNet
+
+
+
+## References
+
+
+
+
+
