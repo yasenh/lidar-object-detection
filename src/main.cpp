@@ -13,6 +13,8 @@
 #include "processPointClouds.cpp"
 
 void cityBlock(pcl::visualization::PCLVisualizer::Ptr& viewer, ProcessPointClouds<pcl::PointXYZI>& point_cloud_processor, pcl::PointCloud<pcl::PointXYZI>::Ptr& input_cloud) {
+    renderPointCloud(viewer, input_cloud, "InputCloud");
+
     // Input point cloud, filter resolution, min Point, max Point
     constexpr float kFilterResolution = 0.2;
     const Eigen::Vector4f kMinPoint(-50, -6.0, -3, 1);
@@ -28,7 +30,7 @@ void cityBlock(pcl::visualization::PCLVisualizer::Ptr& viewer, ProcessPointCloud
 //    // render obstacles point cloud with red
 //    renderPointCloud(viewer, segment_cloud.first, "ObstacleCloud", Color(1, 0, 0));
     // render ground plane with green
-    renderPointCloud(viewer, segment_cloud.second, "GroundCloud", Color(0, 1, 0));
+//    renderPointCloud(viewer, segment_cloud.second, "GroundCloud", Color(0, 1, 0));
 
 
     /*** Euclidean clustering ***/
@@ -50,7 +52,7 @@ void cityBlock(pcl::visualization::PCLVisualizer::Ptr& viewer, ProcessPointCloud
         std::cout << "cluster size ";
         point_cloud_processor.numPoints(cluster);
 
-        renderPointCloud(viewer, cluster, "ObstacleCloud" + std::to_string(cluster_ID), colors[cluster_ID % num_of_colors]);
+//        renderPointCloud(viewer, cluster, "ObstacleCloud" + std::to_string(cluster_ID), colors[cluster_ID % num_of_colors]);
 
         Box box = point_cloud_processor.BoundingBox(cluster);
         // Filter out some cluster with little points and shorter in height
@@ -84,14 +86,12 @@ void initCamera(CameraAngle setAngle, pcl::visualization::PCLVisualizer::Ptr& vi
 
 
 int main (int argc, char** argv) {
-    std::cout << "starting environment" << std::endl;
-
-    pcl::visualization::PCLVisualizer::Ptr viewer(new pcl::visualization::PCLVisualizer ("3D Viewer"));
+    pcl::visualization::PCLVisualizer::Ptr viewer(new pcl::visualization::PCLVisualizer("3D Viewer"));
     CameraAngle setAngle = FPS;
     initCamera(setAngle, viewer);
 
     ProcessPointClouds<pcl::PointXYZI> point_cloud_processor;
-    std::vector<boost::filesystem::path> stream = point_cloud_processor.streamPcd("../data/pcd/data_1");
+    std::vector<boost::filesystem::path> stream = point_cloud_processor.streamPcd("../data/pcd/data_2");
     auto stream_iterator = stream.begin();
     pcl::PointCloud<pcl::PointXYZI>::Ptr input_cloud;
 
