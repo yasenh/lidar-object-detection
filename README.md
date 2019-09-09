@@ -44,6 +44,7 @@ http://www.pointclouds.org/documentation/tutorials/installing_homebrew.php
 - [ ] Better plane segmentation algorithm
 - [ ] Better clustering algorithm: DBSCAN
 - [ ] PointNet
+- [ ] PCA
 
 
 
