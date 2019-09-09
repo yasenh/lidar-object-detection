@@ -49,7 +49,7 @@ http://www.pointclouds.org/documentation/tutorials/installing_homebrew.php
 
 ## References
 
-
+1. [基于欧几里德聚类的激光雷达点云分割及ROS实现](https://blog.csdn.net/AdamShan/article/details/83015570)
 
 
 
